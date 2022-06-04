@@ -1,0 +1,80 @@
+<odoo>
+  <data>
+    <!-- Definicion Explicita de las Vistas -->
+
+    <!-- Vista Tree-->
+   <record model="ir.ui.view" id="usuarios_tree"> 
+      <field name="name">Listado de Usuarios </field>
+      <field name="model">usuarios</field>
+
+      <field name="arch" type="xml">
+        <tree>
+          <field name="id"/>
+          <field name="nombre"/>
+          <field name="contrasenya"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Vista Kanban-->
+    <record model="ir.ui.view" id="usuarios_kanban"> 
+      <field name="name">Listado de Usuarios</field>
+      <field name="model">usuarios</field>
+      <field name="arch" type="xml">
+        <kanban>
+          <templates>
+            <t t-name="kanban-box">
+              <div class="oe_kanban_vignette">
+                <div class = "oe_kanban_details">
+                  <h4>
+                      <a type="open">
+                        <field name="id"/>
+                      </a>
+                  </h4>
+                  <ul>
+                    <li><field name="nombre"/></li>
+                    <li><field name="nombre"/></li>
+                  </ul>
+                </div>
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+   
+    <!-- Vista Form-->
+    <record model="ir.ui.view" id="usuarios_form_view">
+    <field name="name">Añadir un usuario</field>
+    <field name="model">usuarios</field>
+    <field name="arch" type="xml">
+    <form>
+      <group>
+        <group>
+          <field name="nombre"/>
+          <field name="contrasenya"/>
+
+        </group>
+      </group>
+      </form>
+    </field>
+</record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="usuarios_action_window">
+      <field name="name">Listado de Usuarios</field>
+      <field name="res_model">usuarios</field>
+      <!-- Declaramos que vistas se van a ver-->
+      <field name="view_mode">tree,kanban,form</field>
+    </record>
+
+
+    <!-- actions -->
+
+    <menuitem name="Usuarios" id="usuarios_menu" parent="peliculas_menu_root"
+              action="usuarios_action_window"/>
+
+  </data>
+</odoo>

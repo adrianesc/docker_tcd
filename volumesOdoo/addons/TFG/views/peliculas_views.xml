@@ -1,0 +1,105 @@
+<odoo>
+  <data>
+    <!-- Definicion Explicita de las Vistas -->
+
+    <!-- Vista Tree-->
+   <record model="ir.ui.view" id="peliculas_tree"> 
+      <field name="name">Listado de Peliculas </field>
+      <field name="model">peliculas</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="id"/>
+          <field name="nombre"/>
+          <field name="director"/>
+          <field name="sinopsis"/>
+          <field name="genero"/>
+          <field name="portada" widget="image" class="oe_avatar"/>
+          <field name="puntuacion"/>
+          <field name="visitas"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Vista Kanban-->
+    <record model="ir.ui.view" id="peliculas_kanban"> 
+      <field name="name">Listado de Peliculas</field>
+      <field name="model">peliculas</field>
+      <field name="arch" type="xml">
+        <kanban>
+          <templates>
+            <t t-name="kanban-box">
+              <div class="oe_kanban_vignette">
+                <div class = "oe_kanban_details">
+                  <h4>
+                      <a type="open">
+                        <field name="id"/>
+                      </a>
+                  </h4>
+                  <ul>
+                    <li><field name="nombre"/></li>
+                    <li><field name="director"/></li>
+                    <li><field name="sinopsis"/></li>
+                    <li><field name="genero"/></li>
+                    <li><field name="portada" widget="image" class="oe_avatar"/></li>
+                    <li><field name="puntuacion"/></li>
+                    <li><field name="visitas"/></li>
+                  </ul>
+                </div>
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+   
+    <!-- Vista Form-->
+    <record model="ir.ui.view" id="peliculas_form_view">
+    <field name="name">Crear la Pelicula</field>
+    <field name="model">peliculas</field>
+    <field name="arch" type="xml">
+    <form>
+      <group>
+        <group>
+          <field name="nombre"/>
+        </group>
+        <group>
+          <field name="director"/>
+        </group>
+        <group>
+          <field name="genero"/>
+          <field name="sinopsis"/>
+        </group>
+        <group>
+          <field name="trailer"/>
+          <field name="imagen"/>
+          <field name="portada" widget="image" class="oe_avatar"/>
+          <field name="puntuacion"/>
+          <field name="visitas"/>
+        </group>
+      </group>
+      </form>
+    </field>
+</record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="peliculas_action_window">
+      <field name="name">Listado de Peliculas</field>
+      <field name="res_model">peliculas</field>
+      <!-- Declaramos que vistas se van a ver-->
+      <field name="view_mode">tree,kanban,form</field>
+    </record>
+
+
+
+    <!-- Top menu item -->
+    <menuitem name="TFG Almacen" id="peliculas_menu_root" web_icon="TFG,static/description/icon.png"/>
+
+    <!-- actions -->
+
+    <menuitem name="Peliculas" id="peliculas_menu" parent="peliculas_menu_root"
+              action="peliculas_action_window"/>
+
+  </data>
+</odoo>

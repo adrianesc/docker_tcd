@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+acl_peliculas,peliculas_default,model_peliculas,base.group_user,1,1,1,1
+acl_directores,directores_default,model_directores,base.group_user,1,1,1,1
+acl_generos,generos_default,model_generos,base.group_user,1,1,1,1
+acl_usuarios,usuarios_default,model_usuarios,base.group_user,1,1,1,1
+acl_comentarios,comentarios_default,model_comentarios,base.group_user,1,1,1,1
+acl_posibles_peliculas,posibles_peliculas_default,model_posibles_peliculas,base.group_user,1,1,1,1
+

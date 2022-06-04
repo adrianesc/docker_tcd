@@ -1,0 +1,81 @@
+<odoo>
+  <data>
+    <!-- Definicion Explicita de las Vistas -->
+
+    <!-- Vista Tree-->
+   <record model="ir.ui.view" id="comentarios_tree"> 
+      <field name="name">Listado de Comentarios </field>
+      <field name="model">comentarios</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="id"/>
+          <field name="usuario"/>
+          <field name="pelicula"/>
+          <field name="comentario"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Vista Kanban-->
+    <record model="ir.ui.view" id="comentarios_kanban"> 
+      <field name="name">Listado de Comentarios</field>
+      <field name="model">comentarios</field>
+      <field name="arch" type="xml">
+        <kanban>
+          <templates>
+            <t t-name="kanban-box">
+              <div class="oe_kanban_vignette">
+                <div class = "oe_kanban_details">
+                  <h4>
+                      <a type="open">
+                        <field name="id"/>
+                      </a>
+                  </h4>
+                  <ul>
+                    <li><field name="usuario"/></li>
+                    <li><field name="pelicula"/></li>
+                    <li><field name="comentario"/></li>
+                  </ul>
+                </div>
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+   
+    <!-- Vista Form-->
+    <record model="ir.ui.view" id="comentarios_form_view">
+    <field name="name">Añadir un comentario</field>
+    <field name="model">comentarios</field>
+    <field name="arch" type="xml">
+    <form>
+      <group>
+        <group>
+          <field name="usuario"/>
+          <field name="pelicula"/>
+          <field name="comentario"/>
+        </group>
+      </group>
+      </form>
+    </field>
+</record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="comentarios_action_window">
+      <field name="name">Listado de Comentarios</field>
+      <field name="res_model">comentarios</field>
+      <!-- Declaramos que vistas se van a ver-->
+      <field name="view_mode">tree,kanban,form</field>
+    </record>
+
+
+    <!-- actions -->
+
+    <menuitem name="Comentarios" id="comentarios_menu" parent="peliculas_menu_root"
+              action="comentarios_action_window"/>
+
+  </data>
+</odoo>
