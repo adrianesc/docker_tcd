@@ -29,21 +29,6 @@ class ApiRest(http.Controller):
 
 
 
-    '''
-
-    Probar POST (Creando el cargamento cuyo id es 3)
-    Valor de data: {"id":"3", "nombre":"Materiales"}
-    URL COMPLETA (Enviada con POST): http://localhost:8069/gestion/apirest/cargamento?data={"id":"3", "nombre":"Materiales"}
-
-    --------------
-    Probar PUT/PATCH (Modificando el cargamento cuyo id es 3)
-    Valor de data: {"id":"3", "nombre":"Electronica"}
-
-    URL COMPLETA (Enviada con PUT/PATCH): http://localhost:8069/gestion/apirest/cargamento?data={"id":"3", "nombre":"Electronica"}
-
-    '''
-
-
     #Definimos la operacion para metodos POST, PUT y MATCH
     @http.route('/gestion/apirest/<model>', auth="none", cors='*', csrf=False,
                 methods=["POST", "PUT", "PATCH"], type='http')
@@ -57,7 +42,7 @@ class ApiRest(http.Controller):
         if dicDatos["id"]:
             search = [('id', '=', int(dicDatos["id"]))]
         else:
-            return "{'estado':'CARGAMENTO NO INDICADO'}"
+            return "{'estado':'REGISTRO NO INDICADO'}"
         #Si la peticion es de tipo POST,ejecutamos esto
         #En este caso, crearemos un nuevo registro con los datos indicados en "data"
         if (http.request.httprequest.method == 'POST'):
@@ -104,20 +89,6 @@ class ApiRest(http.Controller):
 
         #----
 
-
-    '''
-
-    Probar GET (Consultando el cargamento 1)
-    Valor de data: {"id":"1"}
-    URL COMPLETA (Enviada con GET): http://localhost:8069/gestion/apirest/cargamento?data={"id":"1"} 
-
-    --------------
-    Probar DELETE (Consultando el cargamento 1)
-    Valor de data: {"id":"1"}
-
-    URL COMPLETA (Enviada con DELETE): http://localhost:8069/gestion/apirest/cargamento?data={"id":"1"}  
-
-    '''
     @http.route('/gestion/apirest/<model>', auth="none", cors='*', csrf=False, methods=["GET", "DELETE"],
                 type='http')
     def apiGet(self, **args):
@@ -128,6 +99,7 @@ class ApiRest(http.Controller):
         dicDatos=json.loads(args['data'])
         if (model == "peliculas"):
         #Si se ha indicado id, hay busqueda
+        #Dependiendo de la letra pasado como parámetro se buscará entre unso registros u otros
             if dicDatos:
                 for key in dicDatos:
                     if key == "director":

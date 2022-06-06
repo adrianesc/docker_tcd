@@ -8,14 +8,8 @@ import json
 class EditarPutuacion(http.Controller):
     
     '''
-    Llamada web para obtener lista completa de cargamentos. No es parte de la API REST.
+    Llamada web para obtener modificar la puntuación.
     
-    
-    Decorador que indica que la url "/gestion/<modelo>" atendera por HTTP, sin autentificacion
-    Devolvera texto que estará en formato JSON
-    Se puede probar accediendo a http://localhost:8069/gestion/peliculas
-    Y nos devolvera informacion sobre cada cargamento
-
     '''
 
     @http.route('/editar/putuacion/<pelicula>/<usuario>', auth='public', cors='*', type='http')

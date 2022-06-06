@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "TFG",
+    'name': "TCD",
 
     'summary': """
-    Gestionar y Administrar los Pedidos""",
+    Almacenar películas y su información""",
 
     'description': """
-    Gestionar y Administrar los Pedidos
+    Almacenar películas y su información
     """,
 
-    'author': "Adrian",
+    'author': "Adrian Escudero",
     #Indicamos que es una aplicación
     'application': True,
 

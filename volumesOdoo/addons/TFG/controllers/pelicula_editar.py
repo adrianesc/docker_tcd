@@ -8,16 +8,11 @@ import json
 class EditarPelicula(http.Controller):
     
     '''
-    Llamada web para obtener lista completa de cargamentos. No es parte de la API REST.
+    Llamada web para modificar películas.
     
-    
-    Decorador que indica que la url "/gestion/<modelo>" atendera por HTTP, sin autentificacion
-    Devolvera texto que estará en formato JSON
-    Se puede probar accediendo a http://localhost:8069/gestion/peliculas
-    Y nos devolvera informacion sobre cada cargamento
-
     '''
 
+    #dependiendo del parametro tipo, modificará un registro u otro
     @http.route('/editar/pelicula/<id>/<tipo>/<dato>', auth='public', cors='*', type='http')
     def editarPelicula(self, id, tipo, dato,**kw):
         record = request.env['peliculas'].sudo().search([('id','=', id)])
